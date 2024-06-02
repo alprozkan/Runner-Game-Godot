@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ch6jax263w3wp"]
+
+[ext_resource type="Texture2D" uid="uid://cwbm4tkqek2ee" path="res://Texture/PolygonCity_Texture_01_A.png" id="1_xmefs"]
+
+[resource]
+albedo_texture = ExtResource("1_xmefs")

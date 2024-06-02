@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://dymhda7q58xbb"]
+
+[ext_resource type="Texture2D" uid="uid://bdw2j5kejiegc" path="res://Texture/Grid/Dark/texture_01.png" id="1_ui7tu"]
+[ext_resource type="Texture2D" uid="uid://b58xv1joypxo5" path="res://Texture/Grid/Orange/texture_09.png" id="2_6o3hg"]
+[ext_resource type="Texture2D" uid="uid://dko2pc0uq6pwf" path="res://Texture/Grid/Green/texture_01.png" id="3_2ueco"]
+[ext_resource type="Texture2D" uid="uid://c6tbgl2cypvn5" path="res://Texture/Grid/Purple/texture_04.png" id="4_67byv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qpgi6"]
+albedo_texture = ExtResource("1_ui7tu")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_32pa6"]
+albedo_texture = ExtResource("2_6o3hg")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bwgdm"]
+albedo_texture = ExtResource("3_2ueco")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j8ldf"]
+albedo_texture = ExtResource("4_67byv")
+
+[node name="World" type="Node3D"]
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="Floor" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.750732, 0)
+material_override = SubResource("StandardMaterial3D_qpgi6")
+size = Vector3(1000, 1.5, 1000)
+
+[node name="Wall01" type="CSGBox3D" parent="Map"]
+transform = Transform3D(0.784863, 0, -0.619669, 0, 1, 0, 0.619669, 0, 0.784863, -1.82485, 0.25, -1.14057)
+material_override = SubResource("StandardMaterial3D_32pa6")
+size = Vector3(0.3, 0.5, 1)
+
+[node name="Wall02" type="CSGBox3D" parent="Map"]
+transform = Transform3D(0.729123, 0, -1.03727, 0, 1, 0, 0.706545, 0, 1.07042, 0.600714, 0.499146, 0.978798)
+material_override = SubResource("StandardMaterial3D_bwgdm")
+size = Vector3(0.637744, 0.998291, 0.707153)
+
+[node name="Box01" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1258, 0.15, 0.635133)
+material_override = SubResource("StandardMaterial3D_j8ldf")
+size = Vector3(0.3, 0.3, 0.3)
+
+[node name="Box02" type="CSGBox3D" parent="Map"]
+transform = Transform3D(0.536843, 0, -0.843682, 0, 1, 0, 0.843682, 0, 0.536843, -1.50808, 0.15, 0.889424)
+material_override = SubResource("StandardMaterial3D_j8ldf")
+size = Vector3(0.3, 0.3, 0.3)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]

@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dp110sxitupvp"]
-
-[ext_resource type="PackedScene" uid="uid://c8pxrseal8n7j" path="res://SyntyCityPack/Characters/SK_Character_Male_Hoodie.fbx" id="1_ec535"]
-[ext_resource type="Material" uid="uid://ch6jax263w3wp" path="res://SyntyCityPack/Materials/M_General01.tres" id="2_d2bi6"]
-
-[node name="Root Scene" instance=ExtResource("1_ec535")]
-
-[node name="Character_Male_Hoodie" parent="RootNode/Root/Skeleton3D" index="0"]
-material_override = ExtResource("2_d2bi6")
