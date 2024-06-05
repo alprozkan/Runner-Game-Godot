@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Narrative-runner-master"
-run/main_scene="res://Scene/Level/Controller Level.tscn"
+run/main_scene="res://Scene/Level/MainUI.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
