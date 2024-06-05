@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx1mntxdwnhvv"]
+
+[ext_resource type="PackedScene" uid="uid://cg7nqc38kpxf8" path="res://Model/Buildings/SM_Env_Grass_01.fbx" id="1_dubnk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_busag"]
+
+[node name="Root Scene" instance=ExtResource("1_dubnk")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RootNode/SM_Env_Grass_01" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RootNode/SM_Env_Grass_01/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_busag")

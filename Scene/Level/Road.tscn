@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ra1na80wmral"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_88lh4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0gtqp"]
+size = Vector3(2.00098, 0.0181885, 1.95313)
+
+[node name="Road" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("PlaneMesh_88lh4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(6, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_0gtqp")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://lmxqdn13cswa"]
+
+[ext_resource type="PackedScene" uid="uid://bvgvn4sgcpb5p" path="res://Model/Buildings/SM_Bld_Apartment_03.fbx" id="1_jnskm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qp6nf"]
+
+[node name="Root Scene" instance=ExtResource("1_jnskm")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RootNode/SM_Bld_Apartment_03" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RootNode/SM_Bld_Apartment_03/StaticBody3D" index="0"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.0255568, 0.0128007, -0.0247042)
+shape = SubResource("BoxShape3D_qp6nf")
