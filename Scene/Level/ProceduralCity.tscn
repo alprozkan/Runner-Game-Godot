@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dct4df5ex7f4"]
 
 [ext_resource type="Script" path="res://Scripts/ProceduralCity.gd" id="1_wxu55"]
-[ext_resource type="PackedScene" uid="uid://70gah5w5dle4" path="res://Scene/Actor/Player.tscn" id="2_n71t0"]
+[ext_resource type="PackedScene" uid="uid://qhwg1eclr3e2" path="res://Scene/Actor/Runner.tscn" id="2_dliv6"]
 [ext_resource type="PackedScene" uid="uid://ctsi5gpotlx5a" path="res://Scene/Level/StartingBlock.tscn" id="3_edo1p"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bork2"]
@@ -16,8 +16,8 @@ sky = SubResource("Sky_ed8xe")
 [node name="ProceduralCity" type="Node3D"]
 script = ExtResource("1_wxu55")
 
-[node name="Player" parent="." instance=ExtResource("2_n71t0")]
-transform = Transform3D(-0.99718, 0, -0.0750483, 0, 1, 0, 0.0750483, 0, -0.99718, 0, 0, 4)
+[node name="Player" parent="." instance=ExtResource("2_dliv6")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 
