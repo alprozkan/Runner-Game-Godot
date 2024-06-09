@@ -5,19 +5,12 @@ extends CharacterBody3D
 @onready var animation_player = $Visuals/YBot_LocomotionPack/AnimationPlayer
 @onready var visuals = $Visuals
 
-var SPEED = 2.8
 const JUMP_VELOCITY = 4.5
-
-var walkSpeed = 2.8
 var runSpeed = 5
-var running = false
+var currentLane = 0
 
 enum RunnerState {running, transition, hurt, gameOver}
 var state = RunnerState.running
-
-@export var mouseSensYaw = .1
-@export var mouseSensPitch = .1
-@export var invertMouseY = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -34,13 +27,17 @@ func _physics_process(delta):
 
 		# Handle jump.
 		if is_on_floor():
-			if Input.is_action_pressed("left"):
-				velocity.x = JUMP_VELOCITY/2
+			if Input.is_action_pressed("left") and currentLane != -1:
+				velocity.x = JUMP_VELOCITY
 				velocity.y = JUMP_VELOCITY
+				visuals.look_at(position - Vector3.FORWARD + Vector3.RIGHT)
+				currentLane -= 1
 				state = RunnerState.transition
-			if Input.is_action_pressed("right"):
-				velocity.x = -JUMP_VELOCITY/2
+			if Input.is_action_pressed("right") and currentLane != 1:
+				visuals.look_at(position - Vector3.FORWARD + Vector3.LEFT)
+				velocity.x = -JUMP_VELOCITY
 				velocity.y = JUMP_VELOCITY
+				currentLane += 1
 				state = RunnerState.transition
 			if Input.is_action_just_pressed("ui_accept"):
 				velocity.y = JUMP_VELOCITY
@@ -49,8 +46,10 @@ func _physics_process(delta):
 	if state == RunnerState.transition:
 		if animation_player.current_animation != "Jump":
 			animation_player.play("Jump")
-		if animation_player.current_animation_position >= 2:
+			animation_player.seek(.8,true,false)
+		if animation_player.current_animation_position > 1 and is_on_floor():
 			velocity.x = 0
+			visuals.look_at(position - Vector3.FORWARD)
 			state = RunnerState.running
 
 	# Add the gravity.
