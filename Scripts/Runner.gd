@@ -5,7 +5,7 @@ extends CharacterBody3D
 @onready var animation_player = $Visuals/YBot_LocomotionPack/AnimationPlayer
 @onready var visuals = $Visuals
 
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 6.5
 var runSpeed = 5
 var currentLane = 0
 

@@ -16,9 +16,6 @@ sky = SubResource("Sky_ed8xe")
 [node name="ProceduralCity" type="Node3D"]
 script = ExtResource("1_wxu55")
 
-[node name="Player" parent="." instance=ExtResource("2_dliv6")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -27,3 +24,6 @@ environment = SubResource("Environment_n67b2")
 [node name="StartingBlock" parent="." instance=ExtResource("3_edo1p")]
 transform = Transform3D(12, 0, 0, 0, 5, 0, 0, 0, 5, 0, -0.776351, -0.303735)
 visible = false
+
+[node name="Player" parent="." instance=ExtResource("2_dliv6")]
+transform = Transform3D(-0.99815, 0, -0.0608047, 0, 1, 0, 0.0608047, 0, -0.99815, 0, 0, 2.81282)
