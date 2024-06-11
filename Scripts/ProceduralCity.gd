@@ -5,10 +5,12 @@ const LANE_WIDTH = 4
 const TILE_LENGTH = 4
 const SEGMENT_LENGTH = 2000
 const LANE_SPACING = 4 # Space between lanes
+const NO_OBSTACLE_SEGMENTS = 20  # Number of segments without obstacles at the start
 
 @export var road_tile_scene = preload("res://Scene/Level/Road.tscn")
 @export var building_tile_scene = preload("res://Scene/Level/Building1.tscn")
 @export var grass_tile_scene = preload("res://Scene/Level/Grass.tscn")
+@export var obstacle_scene = preload("res://Scene/Level/Obstacle.tscn")
 
 var segments = []
 
@@ -36,6 +38,11 @@ func add_segment(index):
 		if lane < LANE_COUNT - 1:
 			var grass_position = Vector3(((lane + 0.5) * (LANE_WIDTH + LANE_SPACING)) - (LANE_WIDTH + LANE_SPACING), 0, index * TILE_LENGTH)
 			add_grass(grass_position, lane)
+
+		# Randomly add obstacles on the lanes if the index is greater than the no-obstacle segments threshold
+		if index > NO_OBSTACLE_SEGMENTS and randi() % 10 == 0:  # chance to place an obstacle
+			var obstacle_position = Vector3((lane * (LANE_WIDTH + LANE_SPACING)) - (LANE_WIDTH + LANE_SPACING), 0, index * TILE_LENGTH)
+			add_obstacle(obstacle_position)
 
 	# Add buildings on the sides of the roads
 	add_buildings(index)
@@ -81,6 +88,13 @@ func add_grass(position, lane):
 	grass_tile.transform.origin = position + Vector3(0, 0, -TILE_LENGTH / 2)
 	add_child(grass_tile)
 	segments.append(grass_tile)
+
+func add_obstacle(position):
+	var obstacle_tile = obstacle_scene.instantiate()
+	# Set the obstacle position before adding it to the scene tree
+	obstacle_tile.transform.origin = position + Vector3(0, 0.5, 0)  # a bit above ground
+	add_child(obstacle_tile)
+	segments.append(obstacle_tile)
 
 # Helper function to get a random float between min and max
 func randf_range(min, max):
