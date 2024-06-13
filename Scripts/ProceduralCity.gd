@@ -8,7 +8,7 @@ const LANE_SPACING = 4 # Space between lanes
 const NO_OBSTACLE_SEGMENTS = 20  # Number of segments without obstacles at the start
 
 @export var road_tile_scene = preload("res://Scene/Level/Road.tscn")
-@export var building_tile_scene = preload("res://Scene/Level/Building1.tscn")
+@export var building3_tile_scene = preload("res://Scene/Level/Building3.tscn")
 @export var grass_tile_scene = preload("res://Scene/Level/Grass.tscn")
 @export var obstacle_scene = preload("res://Scene/Level/Obstacle.tscn")
 
@@ -51,32 +51,38 @@ func add_buildings(index):
 	var previous_building_positions = []  # Store positions of previous buildings
 
 	for side in [-1, 1]:
-		var building_tile = building_tile_scene.instantiate()
-		var building_mesh = building_tile.get_node("StaticBody3D/MeshInstance3D")
-		if building_mesh:
-			var random_scale = randf_range(2.0, 5.0)  # Random scale between 2.0 and 5.0
-			building_mesh.scale = Vector3(random_scale, random_scale, random_scale)
-			
-			var position_offset = Vector3(
-				side * ((LANE_COUNT * (LANE_WIDTH + LANE_SPACING)) / 2 + LANE_WIDTH + LANE_SPACING), 
-				0, 
-				index * TILE_LENGTH
-			)
-			
-			# Ensure buildings do not overlap
-			var overlapping = true
-			while overlapping:
-				overlapping = false
-				for previous_position in previous_building_positions:
-					if position_offset.distance_to(previous_position) < (random_scale * LANE_WIDTH):
-						position_offset += Vector3(0, 0, TILE_LENGTH)
-						overlapping = true
-						break
+		# Instantiate Building3
+		var building_tile = building3_tile_scene.instantiate()
+		
+		var random_scale = randf_range(5.0, 10.0)  # Adjusted scale for larger buildings
+		
+		# Scale and position all child meshes
+		for child in building_tile.get_children():
+			if child is StaticBody3D:
+				for grandchild in child.get_children():
+					if grandchild is MeshInstance3D:
+						grandchild.scale = Vector3(random_scale, random_scale, random_scale)
+		
+		var position_offset = Vector3(
+			side * ((LANE_COUNT * (LANE_WIDTH + LANE_SPACING)) / 2 + LANE_WIDTH + LANE_SPACING), 
+			0, 
+			index * TILE_LENGTH
+		)
+		
+		# Ensure buildings do not overlap
+		var overlapping = true
+		while overlapping:
+			overlapping = false
+			for previous_position in previous_building_positions:
+				if position_offset.distance_to(previous_position) < (random_scale * LANE_WIDTH):
+					position_offset += Vector3(0, 0, TILE_LENGTH)
+					overlapping = true
+					break
 
-			building_tile.transform.origin = position_offset
-			previous_building_positions.append(position_offset)
-			add_child(building_tile)
-			segments.append(building_tile)
+		building_tile.transform.origin = position_offset
+		previous_building_positions.append(position_offset)
+		add_child(building_tile)
+		segments.append(building_tile)
 
 func add_grass(position, lane):
 	var grass_tile = grass_tile_scene.instantiate()
@@ -91,9 +97,9 @@ func add_grass(position, lane):
 
 func add_obstacle(position):
 	var obstacle_tile = obstacle_scene.instantiate()
-	# Set the obstacle position before adding it to the scene tree
-	obstacle_tile.transform.origin = position + Vector3(0, 0.5, 0)  # a bit above ground
-	add_child(obstacle_tile)
+	add_child(obstacle_tile)  # Add the obstacle to the scene tree
+	# Set the obstacle position after adding it to the scene tree
+	obstacle_tile.global_transform.origin = position + Vector3(0, 0.5, 0)  # a bit above ground
 	segments.append(obstacle_tile)
 
 # Helper function to get a random float between min and max

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfiyaevfbqrf8"]
+
+[ext_resource type="PackedScene" uid="uid://djjdi0djlflss" path="res://Assets/Building3.fbx" id="1_8r2fp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kswpd"]
+
+[node name="Root Scene" instance=ExtResource("1_8r2fp")]
+
+[node name="Plane" parent="RootNode" index="1"]
+transform = Transform3D(2481.89, 0, 0, 0, -0.000293775, 100, 0, -2464.36, -1.19209e-05, 9.13755, -1.21312, -11.3749)
+material_override = SubResource("StandardMaterial3D_kswpd")

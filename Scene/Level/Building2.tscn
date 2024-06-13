@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp37sf3ny42jl"]
+
+[ext_resource type="PackedScene" uid="uid://vrdjmymjbypp" path="res://Assets/Building1,.obj" id="1_4onvi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kt8yj"]
+
+[node name="Building1," instance=ExtResource("1_4onvi")]
+
+[node name="Plane" parent="." index="0"]
+visible = false
+material_override = SubResource("StandardMaterial3D_kt8yj")
