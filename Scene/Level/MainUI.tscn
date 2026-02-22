@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dyht2s4vpusyv"]
 
-[ext_resource type="Script" path="res://Scripts/MainUI.gd" id="1_isbks"]
+[ext_resource type="Script" path="res://Scripts/MainUI.cs" id="1_isbks"]
 [ext_resource type="PackedScene" uid="uid://dymhda7q58xbb" path="res://Scene/Level/Controller Level.tscn" id="2_jsyg4"]
 [ext_resource type="PackedScene" uid="uid://dct4df5ex7f4" path="res://Scene/Level/ProceduralCity.tscn" id="3_f8uil"]
 

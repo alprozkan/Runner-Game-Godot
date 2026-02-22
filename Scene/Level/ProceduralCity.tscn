@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dct4df5ex7f4"]
 
-[ext_resource type="Script" path="res://Scripts/ProceduralCity.gd" id="1_wxu55"]
+[ext_resource type="Script" path="res://Scripts/ProceduralCity.cs" id="1_wxu55"]
 [ext_resource type="PackedScene" uid="uid://qhwg1eclr3e2" path="res://Scene/Actor/Runner.tscn" id="2_dliv6"]
 [ext_resource type="PackedScene" uid="uid://ctsi5gpotlx5a" path="res://Scene/Level/StartingBlock.tscn" id="3_edo1p"]
 
